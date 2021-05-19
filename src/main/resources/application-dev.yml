@@ -1,0 +1,29 @@
+spring:
+    # 数据库配置
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver        # mysql驱动
+        url: jdbc:mysql://192.168.10.52:3308/bond?useUnicode=true&characterEncoding=utf-8&useSSL=false      # 数据库连接配置
+        username: root      # 数据库用户名
+        password: 123456        # 数据库密码
+    # 服务配置
+    application:
+        name: search-export        # 服务名称
+
+    # rabbitmq的配置
+    rabbitmq:
+        host: 192.168.10.17
+        port: 5672
+        virtual-host: /
+        username: guest
+        password: guest
+        # 发送者开启 confirm 确认机制
+        publisher-confirms: true
+        # 发送者开启 return 确认机制
+        publisher-returns: true
+        listener:
+            simple:
+                acknowledge-mode: manual   # 设置消费端手动 ack
+
+
+server:
+    port: 8081      # 服务端口
